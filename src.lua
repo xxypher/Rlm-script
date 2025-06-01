@@ -706,7 +706,7 @@ function library:init()
     utility:Instance('ImageButton', {
         Parent = screenGui,
         Visible = true,
-        Modal = true,
+        Modal = false,
         Size = UDim2.new(1,0,1,0),
         ZIndex = 9999999999,
         Transparency = 1;
