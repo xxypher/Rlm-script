@@ -703,14 +703,14 @@ function library:init()
     if syn then syn.protect_gui(screenGui); end
     screenGui.Parent = game:GetService('CoreGui');
     screenGui.Enabled = true;
-    utility:Instance('ImageButton', {
-        Parent = screenGui,
-        Visible = true,
-        Modal = true,
-        Size = UDim2.new(1,0,1,0),
-        ZIndex = 9999999999,
-        Transparency = 1;
-    })
+    -- utility:Instance('ImageButton', {
+    --     Parent = screenGui,
+    --     Visible = true,
+    --     Modal = false,
+    --     Size = UDim2.new(1,0,1,0),
+    --     ZIndex = 9999999999,
+    --     Transparency = 1;
+    -- })
 
     utility:Connection(library.unloaded, function()
         screenGui:Destroy()
