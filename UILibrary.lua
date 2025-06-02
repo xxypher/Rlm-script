@@ -1,13 +1,8 @@
 local startupArgs = ({...})[1] or {}
 
-
-
 if getgenv().library ~= nil then
     getgenv().library:Unload();
 end
-
-
-
 
 if not game:IsLoaded() then
     game.Loaded:Wait()
@@ -31,40 +26,6 @@ local executor = (
     getexecutorname and getexecutorname() or
     'unknown'
 )
-
-
--- Globals
-
-local CachedScripts = {}
-
-local function CustomRequire(path)
-    if typeof(path) ~= "string" then
-        return
-    end    
-
-    if CachedScripts[path] then
-        return CachedScripts[path]
-    end
-
-    local root = "https://raw.githubusercontent.com/xxypher/Rlm-script/refs/heads/main"
-    local url = root, path
-    
-    local scriptFunction, syntaxError = loadstring(url)
-
-    CachedScripts[url] = scriptFunction
-
-    if (not scriptFunction) then
-        warn(syntaxError)
-        warn(url)
-        return
-    end
-
-    return scriptFunction  
-end
-
-getgenv().Require = CustomRequire
-
---
 
 local library = {
     windows = {};
