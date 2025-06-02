@@ -67,10 +67,10 @@ Main:AddToggle({
     risky = false,
     noindicator = false,
     callback = function(v)
-       Commands.Fly(v)
+       print("callback")
     end,
     keycallback = function(v)
-        Commands.Fly(v)
+        print("keycallback")
     end
 })
 
