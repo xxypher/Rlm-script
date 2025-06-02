@@ -6,49 +6,19 @@ local MainUtils = loadstring(game:HttpGet("https://raw.githubusercontent.com/xxy
 local MarkerPlaceService = game:GetService("MarketplaceService")
 local Players = game:GetService("Players")
 
-
-
-
 -- Requires
 
 local Maid = getgenv().Require("/Utils/Maid.lua")
+local Commands = getgenv().Require("/Commands.lua")
+local library = getgenv().Require("/UILibrary.lua")
 
 -- Info
 
 local Player = Players.LocalPlayer
-local Character
-local Humanoid
-local HumanoidRootPart
-local Torso
 
-if game.IsLoaded then
-    Character = Player.Character or Player.PlayerAdded:Connect()
-end
-
--- Functions
-
-do
-
-
-
-
-    local function Fly(Value)
-        if (not Value) then
-            
-        end
-    end
-end
    
 
-local Decimals = 4
-local Clock = os.clock()
 local ValueText = "Value Is Now :"
-
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xxypher/Rlm-script/refs/heads/main/UILibrary.lua"))({
-    cheatname = "Title Here", -- watermark text
-    gamename = "Title Here", -- watermark text
-})
-
 
 library:init()
 
@@ -205,6 +175,3 @@ Main:AddColor({
         print(ValueText, v)
     end
 })
-
-local Time = (string.format("%."..tostring(Decimals).."f", os.clock() - Clock))
-library:SendNotification(("Loaded In "..tostring(Time)), 6)
