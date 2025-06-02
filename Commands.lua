@@ -16,27 +16,31 @@ local Player = Players.LocalPlayer
 function pullToGround()
 
     if Maid.fly and UserInputService:IsKeyDown(Enum.KeyCode.Space) then
-        if Maid.downwardsVelocity ~= nil then
-            Maid.downwardsVelocity:Destroy()
+        if Maid.flyDownBV ~= nil then
+            Maid.flyDownBV:Destroy()
         end
+
+        Maid.flyUpBV = (Maid.flyUpBV and Maid.flyUpBV and Maid.flyUpBV) or Instance.new("BodyVelocity")
+
+        Maid.flyUpBV.MaxForce = Vector3.new(0,20000,0)
+        Maid.flyUpBV.P = 1250
+        Maid.flyUpBV.Velocity = Vector3.new(0,Library.flags.upwardVelocitySpeed,0)
+        Maid.flyUpBV.Parent = PlayerInfo.HumanoidRootPart
     end
 
-    if Maid.downwardsVelocity ~= nil then
-        return
-    end
+    Maid.flyDownBV = (Maid.flyDownBV and Maid.flyBV.flyDownBV and Maid.flyDownBV) or Instance.new("BodyVelocity")
 
-    Maid.downwardsVelocity = (Maid.downwardsVelocity and Maid.flyBV.downwardsVelocity and Maid.downwardsVelocity) or Instance.new("BodyVelocity")
-
-    Maid.downwardsVelocity.MaxForce = Vector3.new(0,20000,0)
-    Maid.downwardsVelocity.P = 1250
-    Maid.downwardsVelocity.Velocity = Vector3.new(0,-Library.flags.downwardsVelocitySpeed,0)
-    Maid.downwardsVelocity.Parent = PlayerInfo.HumanoidRootPart
+    Maid.flyDownBV.MaxForce = Vector3.new(0,20000,0)
+    Maid.flyDownBV.P = 1250
+    Maid.flyDownBV.Velocity = Vector3.new(0,-Library.flags.downwardsVelocitySpeed,0)
+    Maid.flyDownBV.Parent = PlayerInfo.HumanoidRootPart
 end
 
 Commands.Fly = function(State)
     if (not State) then
         Maid.fly = nil
-        Maid.downwardsVelocity = nil
+        Maid.flyDownBV = nil
+        Maid.flyUpBV = nil
         Maid.flyBV = nil  
         return
     end
