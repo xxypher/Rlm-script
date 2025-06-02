@@ -7,6 +7,11 @@ local Players = game:GetService("Players")
 
 
 
+
+-- Requires
+
+local Utils = CustomRequire("/Utils/Utils.lua")
+
 -- Info
 
 local Player = Players.LocalPlayer
@@ -38,7 +43,7 @@ local Decimals = 4
 local Clock = os.clock()
 local ValueText = "Value Is Now :"
 
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xxypher/Rlm-script/refs/heads/main/src.lua"))({
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xxypher/Rlm-script/refs/heads/main/UILibrary.lua"))({
     cheatname = "Title Here", -- watermark text
     gamename = "Title Here", -- watermark text
 })
@@ -46,7 +51,7 @@ local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xxyph
 
 -- Require
 
-local Maid = getgenv.Require("/Utils/Maid.lua")
+local Maid = getgenv().Require("/Utils/Maid.lua")
 
 library:init()
 
