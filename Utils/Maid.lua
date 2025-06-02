@@ -1,10 +1,8 @@
-SX_VM_CNONE();
----	Manages the cleaning of events and other things.
--- Useful for encapsulating state and make deconstructors easy
--- @classmod Maid
--- @see Signal
+local MainUtils = loadstring(game:HttpGet("https://raw.githubusercontent.com/xxypher/Rlm-script/refs/heads/main/Utils/Utils.lua"))()
 
-local Signal = sharedRequire('/Signal.lua');
+getServerConstant = function(...) return ... end;
+
+local Signal = getgenv().Require('/Signal.lua')
 local tableStr = getServerConstant('table');
 local classNameStr = getServerConstant('Maid');
 local funcStr = getServerConstant('function');
