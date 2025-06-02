@@ -186,7 +186,7 @@ Main:AddList({
     values = {"1", "2", "3"},
     risky = false,
     callback = function(v)
-        print(ValueText, v)
+        
     end
 })
 
@@ -200,7 +200,7 @@ Main:AddColor({
     open = false,
     risky = true,
     callback = function(v)
-        print(ValueText, v)
+        
     end
 })
 
