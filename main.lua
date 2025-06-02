@@ -46,7 +46,7 @@ Main:AddSlider({
     end
 })
 
-Main:AddToggle({
+local Fly =  Main:AddToggle({
     text = "Fly",
     state = false,
     tooltip = "Enable Fly",
@@ -55,7 +55,8 @@ Main:AddToggle({
     callback = function(v)
        print("from the button lol", v)
     end
-}):AddBind({
+})
+Fly:AddBind({
     enabled = true,
     text = "Fly",
     tooltip = "tooltip1",
@@ -67,7 +68,7 @@ Main:AddToggle({
     risky = false,
     noindicator = false,
     callback = function(v)
-       print("callback",v)
+       Fly
     end,
     keycallback = function(v)
         print("keycallback",v)
