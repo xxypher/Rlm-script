@@ -1,5 +1,7 @@
 local MainUtils = loadstring(game:HttpGet("https://raw.githubusercontent.com/xxypher/Rlm-script/refs/heads/main/Utils/Utils.lua"))()
 
+local UnloadHandler = getgenv().Require("/Utils/basics/UnloadHandler.lua")
+
 if getgenv().library ~= nil then
     getgenv().library:Unload();
 end
