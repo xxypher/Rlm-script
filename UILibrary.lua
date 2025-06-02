@@ -49,10 +49,6 @@ local library = {
         ['watermark'] = 1300;
         ['notification'] = 1400;
     },
-    stats = {
-        ['fps'] = 0;
-        ['ping'] = 0;
-    };
     images = {
         ['gradientp90'] = 'https://raw.githubusercontent.com/portallol/luna/main/modules/gradient90.png';
         ['gradientp45'] = 'https://raw.githubusercontent.com/portallol/luna/main/modules/gradient45.png';
