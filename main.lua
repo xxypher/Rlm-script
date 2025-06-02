@@ -14,12 +14,6 @@ local library = getgenv().Require("/UILibrary.lua")
 
 -- Info
 
-local Player = Players.LocalPlayer
-
-   
-
-local ValueText = "Value Is Now :"
-
 library:init()
 
 local Window1  = library.NewWindow({
@@ -35,32 +29,81 @@ local SettingsTab = library:CreateSettingsTab(Window1)
 local Main = Tab1:AddSection("Main", 1)
 --Section1:SetText("Text")
 
+Main:AddSlider({
+    enabled = true,
+    text = "Fly speed",
+    tooltip = "Set the fly speed",
+    flag = "flySpeed",
+    suffix = "",
+    dragging = true,
+    focused = false,
+    min = 0,
+    max = 200,
+    increment = 0.1,
+    risky = false,
+    callback = function(v)
+        
+    end
+})
 
 Main:AddToggle({
     text = "Fly",
     state = false,
     tooltip = "Enable Fly",
-    flag = "Toggle_1",
+    flag = "fly",
     risky = false,
-    callback = function(v)
-        print(ValueText, v)
-    end
+    -- callback = function(v)
+       
+    -- end
 }):AddBind({
     enabled = true,
-    text = "Keybind1",
+    text = "Fly",
     tooltip = "tooltip1",
     mode = "toggle",
     bind = "None",
-    flag = "ToggleKey_1",
+    flag = "fly",
     state = false,
     nomouse = false,
     risky = false,
     noindicator = false,
     callback = function(v)
-        print(ValueText, v)
+       Commands.Fly(v)
     end,
     keycallback = function(v)
-        print(ValueText, v)
+        Commands.Fly(v)
+    end
+})
+
+Main:AddSlider({
+    enabled = true,
+    text = "Fly fall speed",
+    tooltip = "Set the fly speed",
+    flag = "downwardsVelocitySpeed",
+    suffix = "",
+    dragging = true,
+    focused = false,
+    min = 0,
+    max = 100,
+    increment = 0.1,
+    risky = false,
+    callback = function(v)
+        print(library.flags.downwardsVelocitySpeed)
+    end
+})
+Main:AddSlider({
+    enabled = true,
+    text = "Fly up speed",
+    tooltip = "Set the fly speed",
+    flag = "upwardVelocitySpeed",
+    suffix = "",
+    dragging = true,
+    focused = false,
+    min = 0,
+    max = 100,
+    increment = 0.1,
+    risky = false,
+    callback = function(v)
+        print(library.flags.upwardVelocitySpeed)
     end
 })
 
@@ -72,7 +115,7 @@ Main:AddBox({
     focused = false,
     risky = false,
     callback = function(v)
-        print(ValueText, v)
+       
     end
 })
 
@@ -80,14 +123,14 @@ Main:AddToggle({
     text = "Toggle1",
     flag = "Toggle_1",
     callback = function(v)
-        print(ValueText, v)
+       
     end
 }):AddColor({
     text = "Color1",
     color = Color3.fromRGB(255, 255, 255),
     flag = "Color_1",
     callback = function(v)
-        print(ValueText, v)
+        
     end
 })
 
@@ -103,10 +146,10 @@ Main:AddBind({
     risky = false,
     noindicator = false,
     callback = function(v)
-        print(ValueText, v)
+        
     end,
     keycallback = function(v)
-        print(ValueText, v)
+        
     end
 })
 
@@ -128,22 +171,7 @@ Main:AddButton({
 
 -- Button1:SetText("Text")
 
-Main:AddSlider({
-    enabled = true,
-    text = "Slider1",
-    tooltip = "tooltip1",
-    flag = "Slider_1",
-    suffix = "",
-    dragging = true,
-    focused = false,
-    min = 0,
-    max = 100,
-    increment = 0.1,
-    risky = false,
-    callback = function(v)
-        print(ValueText, v)
-    end
-})
+
 
 --Slider_1:SetValue(100)
 
