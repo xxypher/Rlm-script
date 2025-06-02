@@ -2,7 +2,7 @@ local MainUtils = loadstring(game:HttpGet("https://raw.githubusercontent.com/xxy
 
 getServerConstant = function(...) return ... end;
 
-local Signal = getgenv().Require('/Signal.lua')
+local Signal = getgenv().Require('/Utils/Signal.lua')
 local tableStr = getServerConstant('table');
 local classNameStr = getServerConstant('Maid');
 local funcStr = getServerConstant('function');
