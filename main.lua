@@ -52,11 +52,11 @@ Main:AddToggle({
     tooltip = "Enable Fly",
     flag = "fly",
     risky = false,
-    -- callback = function(v)
-       
-    -- end
+    callback = function(v)
+       print("from the button lol", v)
+    end
 }):AddBind({
-    enabled = false,
+    enabled = true,
     text = "Fly",
     tooltip = "tooltip1",
     mode = "toggle",
@@ -67,10 +67,10 @@ Main:AddToggle({
     risky = false,
     noindicator = false,
     callback = function(v)
-       print("callback")
+       print("callback",v)
     end,
     keycallback = function(v)
-        print("keycallback")
+        print("keycallback",v)
     end
 })
 
