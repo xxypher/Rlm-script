@@ -203,3 +203,9 @@ Main:AddColor({
         print(ValueText, v)
     end
 })
+
+
+local Decimals = 4
+local Clock = os.clock()
+local Time = (string.format("%."..tostring(Decimals).."f", os.clock() - Clock))
+library:SendNotification(("Loaded In "..tostring(Time)), 6)
