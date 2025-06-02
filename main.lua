@@ -56,7 +56,7 @@ Main:AddToggle({
        
     -- end
 }):AddBind({
-    enabled = true,
+    enabled = false,
     text = "Fly",
     tooltip = "tooltip1",
     mode = "toggle",
