@@ -11,6 +11,7 @@ local function CustomRequire(path)
     end    
 
     local url = "https://raw.githubusercontent.com/xxypher/Rlm-script/refs/heads/main"..path
+    print(url)
 
     if CachedScripts[url] then
         return CachedScripts[url]
