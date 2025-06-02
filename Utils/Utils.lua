@@ -10,8 +10,7 @@ local function CustomRequire(path)
         return
     end    
 
-    local root = "https://raw.githubusercontent.com/xxypher/Rlm-script/refs/heads/main"
-    local url = root+path
+    local url = "https://raw.githubusercontent.com/xxypher/Rlm-script/refs/heads/main"..path
 
     if CachedScripts[url] then
         return CachedScripts[url]
