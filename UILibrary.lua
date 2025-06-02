@@ -2464,6 +2464,7 @@ function library:init()
 
                                 if bind.flag then
                                     library.flags[bind.flag] = bind.state;
+                                    toggle.state = bind.state
                                 end
                                 self.callback(true)
                                 local display = bind.state; if bind.invertindicator then display = not bind.state; end
