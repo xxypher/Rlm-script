@@ -1,4 +1,5 @@
 local PlaceId = game.PlaceId
+local MainUtils = loadstring(game:HttpGet("https://raw.githubusercontent.com/xxypher/Rlm-script/refs/heads/main/Utils/Utils.lua"))()
 
 -- Services
 
@@ -10,7 +11,7 @@ local Players = game:GetService("Players")
 
 -- Requires
 
-local Utils = CustomRequire("/Utils/Utils.lua")
+local Maid = getgenv().Require("/Utils/Maid.lua")
 
 -- Info
 
@@ -48,10 +49,6 @@ local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xxyph
     gamename = "Title Here", -- watermark text
 })
 
-
--- Require
-
-local Maid = getgenv().Require("/Utils/Maid.lua")
 
 library:init()
 
