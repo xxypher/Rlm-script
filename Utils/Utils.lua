@@ -36,9 +36,9 @@ getgenv().Require = CustomRequire
 Utils.PlayerInfo = {
     Player = Player,
     Character = Player.Character or Player.CharacterAdded:Wait(),
-    Humanoid = Player.Character and Player.Character.Humanoid,
-    HumanoidRootPart = Player.Character and Player.Character.HumanoidRootPart,
-    Torso = Player.Character and Player.Character.Torso,
+    Humanoid = Player.Character and Player.Character:FindFirstChild("Humanoid"),
+    HumanoidRootPart = Player.Character and Player.Character:FindFirstChild("HumanoidRootPart"),
+    Torso = Player.Character and Player.Character:FindFirstChild("Torso"),
 }
 
 
