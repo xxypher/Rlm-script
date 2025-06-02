@@ -16,7 +16,7 @@ local function CustomRequire(path)
         return CachedScripts[url]
     end
     
-    local scriptFunction, syntaxError = loadstring(game:HttpGet(url))
+    local scriptFunction, syntaxError = loadstring(game:HttpGet(url))()
 
     CachedScripts[url] = scriptFunction
 
