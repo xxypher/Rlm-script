@@ -46,7 +46,7 @@ local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xxyph
 
 -- Require
 
-local Maid = getgenv.Require("/Utils/Maid.lua")
+local Maid = getgenv().Require("/Utils/Maid.lua")
 
 library:init()
 
