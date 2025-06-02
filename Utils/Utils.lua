@@ -1,4 +1,9 @@
+local Utils = {}
 local CachedScripts = {}
+
+local Players = game:GetService("Players")
+local Player = Players.LocalPlayer
+
 
 local function CustomRequire(path)
     if typeof(path) ~= "string" then
@@ -26,3 +31,16 @@ local function CustomRequire(path)
 end
 
 getgenv().Require = CustomRequire
+
+
+Utils.PlayerInfo = {
+    Player = Player,
+    Character = Player.Character or Player.CharacterAdded:Wait(),
+    Humanoid = Utils.PlayerInfo.Character and Utils.PlayerInfo.Character.Humanoid,
+    HumanoidRootPart = Utils.PlayerInfo.Character and Utils.PlayerInfo.Character.HumanoidRootPart,
+    Torso = Utils.PlayerInfo.Character and Utils.PlayerInfo.Character.Torso,
+}
+
+
+
+return Utils
