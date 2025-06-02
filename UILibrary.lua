@@ -4697,10 +4697,6 @@ themeSection:AddList({text = 'Presets', flag = 'preset_theme', values = themeStr
     return settingsTab;
 end
 
-local Decimals = 4
-local Clock = os.clock()
-local Time = (string.format("%."..tostring(Decimals).."f", os.clock() - Clock))
-library:SendNotification(("Loaded In "..tostring(Time)), 6)
 
 getgenv().library = library
 return library
