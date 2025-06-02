@@ -20,7 +20,7 @@ function pullToGround()
             Maid.flyDownBV:Destroy()
         end
 
-        Maid.flyUpBV = (Maid.flyUpBV and Maid.flyUpBV and Maid.flyUpBV) or Instance.new("BodyVelocity")
+        Maid.flyUpBV = (Maid.flyUpBV and Maid.flyUpBV and Maid.flyUpBV) or MainUtils.Create(nil, "BodyVelocity")
 
         Maid.flyUpBV.MaxForce = Vector3.new(0,20000,0)
         Maid.flyUpBV.P = 1250
@@ -28,7 +28,7 @@ function pullToGround()
         Maid.flyUpBV.Parent = PlayerInfo.HumanoidRootPart
     end
 
-    Maid.flyDownBV = (Maid.flyDownBV and Maid.flyBV.flyDownBV and Maid.flyDownBV) or Instance.new("BodyVelocity")
+    Maid.flyDownBV = (Maid.flyDownBV and Maid.flyBV.flyDownBV and Maid.flyDownBV) or MainUtils.Create(nil, "BodyVelocity")
 
     Maid.flyDownBV.MaxForce = Vector3.new(0,20000,0)
     Maid.flyDownBV.P = 1250
