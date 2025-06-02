@@ -5,10 +5,36 @@ local PlaceId = game.PlaceId
 local MarkerPlaceService = game:GetService("MarketplaceService")
 local Players = game:GetService("Players")
 
+-- Require
+
+local Maid = Require("/Utils/Maid.lua")
+
 -- Info
 
+local Player = Players.LocalPlayer
+local Character
+local Humanoid
+local HumanoidRootPart
+local Torso
+
+if game.IsLoaded then
+    Character = Player.Character or Player.PlayerAdded:Connect()
+end
+
+-- Functions
+
+do
 
 
+
+
+    local function Fly(Value)
+        if (not Value) then
+            
+        end
+    end
+end
+   
 
 local Decimals = 4
 local Clock = os.clock()
@@ -34,10 +60,11 @@ local SettingsTab = library:CreateSettingsTab(Window1)
 local Main = Tab1:AddSection("Main", 1)
 --Section1:SetText("Text")
 
+
 Main:AddToggle({
-    text = "Toggle1",
+    text = "Fly",
     state = false,
-    tooltip = "tooltip1",
+    tooltip = "Enable Fly",
     flag = "Toggle_1",
     risky = false,
     callback = function(v)
