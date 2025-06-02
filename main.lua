@@ -68,7 +68,7 @@ Fly:AddBind({
     risky = false,
     noindicator = false,
     callback = function(v)
-       Fly
+       
     end,
     keycallback = function(v)
         print("keycallback",v)
