@@ -5,9 +5,7 @@ local PlaceId = game.PlaceId
 local MarkerPlaceService = game:GetService("MarketplaceService")
 local Players = game:GetService("Players")
 
--- Require
 
-local Maid = Require("/Utils/Maid.lua")
 
 -- Info
 
@@ -44,6 +42,11 @@ local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xxyph
     cheatname = "Title Here", -- watermark text
     gamename = "Title Here", -- watermark text
 })
+
+
+-- Require
+
+local Maid = getgenv.Require("/Utils/Maid.lua")
 
 library:init()
 
