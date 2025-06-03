@@ -2469,8 +2469,8 @@ function library:init()
                                 c:Disconnect();
                                 if bind.flag then
                                     library.flags[bind.flag] = false;
+                                    toggle:SetState(false, false);
                                 end
-                                bind.callback(false);
                             end
                             local keyName = 'NONE'
                             self.bind = (keybind and keybind) or keybind or self.bind
@@ -2481,7 +2481,6 @@ function library:init()
                                     library.flags[bind.flag] = bind.state;
                                     toggle:SetState(bind.state, false);
                                 end
-                                self.callback(true)
                                 local display = toggle.state; if bind.invertindicator then display = not toggle.state; end
                                 bind.indicatorValue:SetEnabled(display and not bind.noindicator);
                             else
@@ -2493,7 +2492,6 @@ function library:init()
                                     library.flags[bind.flag] = bind.state;
                                 end
                                 toggle:SetState(bind.state, false);
-                                self.callback(false)
                                 local display = bind.state; if bind.invertindicator then display = not bind.state; end
                                 bind.indicatorValue:SetEnabled(display and not bind.noindicator);
                             end
@@ -2533,7 +2531,6 @@ function library:init()
                                     if bind.flag then
                                         library.flags[bind.flag] = bind.state;
                                     end
-                                    bind.callback(bind.state)
 
                                     local display = bind.state; if bind.invertindicator then display = not bind.state; end
                                     bind.indicatorValue:SetEnabled(display and not bind.noindicator);
