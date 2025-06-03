@@ -2189,9 +2189,12 @@ function library:init()
                                 if self.subobjects then
                                     for i,v in self.subobjects do
                                         if v.class == "bind" then
-
+                                            if v.bind == "none" then
+                                                return
+                                            end
                                             local display = bool; if v.invertindicator then display = not v.state; end
                                             v.indicatorValue:SetEnabled(display and not v.noindicator)
+                                            v.state = self.state
                                         end
                                     end
                                 end
@@ -2476,10 +2479,10 @@ function library:init()
 
                                 if bind.flag then
                                     library.flags[bind.flag] = bind.state;
-                                    toggle.state = bind.state
+                                    toggle:SetState(bind.state, false);
                                 end
                                 self.callback(true)
-                                local display = bind.state; if bind.invertindicator then display = not bind.state; end
+                                local display = toggle.state; if bind.invertindicator then display = not toggle.state; end
                                 bind.indicatorValue:SetEnabled(display and not bind.noindicator);
                             else
                                 keyName = keyNames[keybind] or keybind.Name or keybind
@@ -2489,6 +2492,7 @@ function library:init()
                                 if bind.flag then
                                     library.flags[bind.flag] = bind.state;
                                 end
+                                toggle:SetState(bind.state, false);
                                 self.callback(false)
                                 local display = bind.state; if bind.invertindicator then display = not bind.state; end
                                 bind.indicatorValue:SetEnabled(display and not bind.noindicator);
@@ -2518,8 +2522,9 @@ function library:init()
                                 bind:SetBind(key or (not table.find(blacklistedKeys, inp.KeyCode)) and inp.KeyCode)
                                 bind.binding = false
                             elseif not bind.binding and self.bind == 'none' then
-                                bind.state = true
-                                library.flags[bind.flag] = bind.state
+                                toggle:SetState(true, false);
+                                bind.state = toggle.state
+                                library.flags[bind.flag] = toggle.state
                                 local display = bind.state; if bind.invertindicator then display = not bind.state; end
                                 bind.indicatorValue:SetEnabled(display and not bind.noindicator)
                             elseif (inp.KeyCode == bind.bind or inp.UserInputType == bind.bind) and not bind.binding then
@@ -2533,6 +2538,7 @@ function library:init()
                                     local display = bind.state; if bind.invertindicator then display = not bind.state; end
                                     bind.indicatorValue:SetEnabled(display and not bind.noindicator);
                                     toggle:SetState(bind.state, false);
+                                    bind.state = toggle.state
                                 elseif bind.mode == 'hold' then
                                     if bind.flag then
                                         library.flags[bind.flag] = true;
@@ -2561,6 +2567,7 @@ function library:init()
                                         end
                                         bind.indicatorValue:SetEnabled(bind.invertindicator and true or false);
                                         toggle:SetState(false, false)
+                                        bind.state = toggle.state
                                     end
                                 end
                             end
