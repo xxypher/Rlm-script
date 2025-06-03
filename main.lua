@@ -53,7 +53,7 @@ local Fly =  Main:AddToggle({
     flag = "fly",
     risky = false,
     callback = function(v)
-       print("from the button lol", v)
+       print(library.flags.fly)
     end
 })
 Fly:AddBind({
@@ -68,7 +68,7 @@ Fly:AddBind({
     risky = false,
     noindicator = false,
     callback = function(v)
-       
+       print(library.flags.fly)
     end,
     keycallback = function(v)
         print("keycallback",v)
