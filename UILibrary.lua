@@ -4601,7 +4601,9 @@ function library:CreateSettingsTab(menu)
         if isfile(Path) then
             local file = readfile(Path)
             if file then
-                library:LoadConfig(file)
+                task.delay(1, function()
+                    library:LoadConfig(file)
+                end)
             end
         end
     end
