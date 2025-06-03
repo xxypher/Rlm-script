@@ -2085,6 +2085,7 @@ function library:init()
                         enabled = true;
                         options = {};
                         objects = {};
+                        subobjects = {};
                     };
 
                     local blacklist = {'objects'};
@@ -2182,8 +2183,18 @@ function library:init()
                             self.objects.background.ThemeColor = bool and 'Accent' or 'Option Background';
                             self.objects.background.ThemeColorOffset = bool and -55 or 0
 
-                            if not nocallback then
+                            if (not nocallback) then
                                 self.callback(bool);
+
+                                if self.subobjects then
+                                    for i,v in self.subobjects do
+                                        if v.class == "bind" then
+
+                                            local display = bool; if v.invertindicator then display = not v.state; end
+                                            v.indicatorValue:SetEnabled(display and not v.noindicator)
+                                        end
+                                    end
+                                end
                             end
 
                         end
@@ -2244,6 +2255,7 @@ function library:init()
                         end
                         
                         table.insert(self.options, color)
+                        table.insert(toggle.subobjects, color)
     
                         if color.flag then
                             library.flags[color.flag] = color.color;
@@ -2392,7 +2404,8 @@ function library:init()
                         end
                         
                         table.insert(self.options, bind)
-    
+                         table.insert(toggle.subobjects, bind)
+
                         if bind.flag then
                             library.options[bind.flag] = bind;
                         end
@@ -2516,13 +2529,16 @@ function library:init()
                                         library.flags[bind.flag] = bind.state;
                                     end
                                     bind.callback(bind.state)
+
                                     local display = bind.state; if bind.invertindicator then display = not bind.state; end
                                     bind.indicatorValue:SetEnabled(display and not bind.noindicator);
+                                    toggle:SetState(bind.state, false);
                                 elseif bind.mode == 'hold' then
                                     if bind.flag then
                                         library.flags[bind.flag] = true;
                                     end
                                     bind.indicatorValue:SetEnabled((not bind.invertindicator and true or false) and not bind.noindicator);
+                                    toggle:SetState(true, false)
                                     c = utility:Connection(runservice.RenderStepped, function()
                                         if bind.callback then
                                             bind.callback(true);
@@ -2544,6 +2560,7 @@ function library:init()
                                             bind.callback(false);
                                         end
                                         bind.indicatorValue:SetEnabled(bind.invertindicator and true or false);
+                                        toggle:SetState(false, false)
                                     end
                                 end
                             end
@@ -2581,6 +2598,7 @@ function library:init()
                         end
                 
                         table.insert(self.options, slider)
+                         table.insert(toggle.subobjects, slider)
 
                         if slider.flag then
                             library.flags[slider.flag] = slider.value;
@@ -2752,6 +2770,7 @@ function library:init()
                         }
     
                         table.insert(self.options, list);
+                         table.insert(toggle.subobjects, list)
     
                         local blacklist = {'objects'};
                         for i,v in next, data do
@@ -3183,6 +3202,7 @@ function library:init()
                         risky = false;
                         objects = {};
                         subbuttons = {};
+                        subobjects = {};
                     };
 
                     local blacklist = {'objects'};
