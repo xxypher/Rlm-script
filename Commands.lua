@@ -19,7 +19,7 @@ function pullToGround()
             Maid.flyDownBV:Destroy()
         end
 
-        Maid.flyUpBV = (Maid.flyUpBV and Maid.flyUpBV and Maid.flyUpBV) or MainUtils.Create("upBV", "BodyVelocity")
+        Maid.flyUpBV = (Maid.flyUpBV and Maid.flyUpBV) or MainUtils.Create("upBV", "BodyVelocity")
 
         Maid.flyUpBV.MaxForce = Vector3.new(0,20000,0)
         Maid.flyUpBV.P = 1250
@@ -27,7 +27,7 @@ function pullToGround()
         Maid.flyUpBV.Parent = PlayerInfo.HumanoidRootPart
     end
 
-    Maid.flyDownBV = (Maid.flyDownBV and Maid.flyDownBV and Maid.flyDownBV) or MainUtils.Create("downBV", "BodyVelocity")
+    Maid.flyDownBV = (Maid.flyDownBV and Maid.flyDownBV) or MainUtils.Create("downBV", "BodyVelocity")
 
     local Speed = Vector3.new(0,-Library.flags.downwardsVelocitySpeed,0)
     if UserInputService:IsKeyDown(Enum.KeyCode.LeftControl) then
@@ -73,8 +73,7 @@ Commands.Fly = function(State)
         if UserInputService:IsKeyDown(Enum.KeyCode.D) then
             MoveDirection = MoveDirection + camera.CFrame.RightVector
         end
-       
-
+    
         Maid.flyBV.Parent = PlayerInfo.HumanoidRootPart;
         Maid.flyBV.MaxForce = Vector3.new(math.huge, 0, math.huge);
         Maid.flyBV.Velocity = MoveDirection * 100
