@@ -17,7 +17,11 @@ function Utils.CustomRequire(path)
         return
     end    
 
-    local url = "https://raw.githubusercontent.com/xxypher/Rlm-script/refs/heads/main"..path
+
+
+    local url = "https://raw.githubusercontent.com/xxypher/Rlm-script/refs/heads/myfirstfeature" and _G.Debug or "https://raw.githubusercontent.com/xxypher/Rlm-script/refs/heads/main" ..path
+
+    
     print(path)
 
     if CachedScripts[url] then
