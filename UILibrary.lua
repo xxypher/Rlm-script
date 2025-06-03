@@ -2373,12 +2373,11 @@ function library:init()
                             bind = 'none';
                             mode = 'toggle';
                             order = #self.options+1;
-                            callback = function() end;
-                            keycallback = function() end;
+                            callback = toggle.callback;
                             indicatorValue = library.keyIndicator:AddValue({value = 'value', key = 'key', enabled = false});
                             noindicator = false;
                             invertindicator = false;
-                            state = false;
+                            state = toggle.state;
                             nomouse = false;
                             enabled = true;
                             binding = false;
@@ -2398,17 +2397,17 @@ function library:init()
                             library.options[bind.flag] = bind;
                         end
 
-                        if bind.bind == 'none' then
-                            bind.state = true
-                            if bind.flag then
-                                library.flags[bind.flag] = bind.state;
-                            end
-                            bind.callback(true)
-                            local display = bind.state; if bind.invertindicator then display = not bind.state; end
-                            bind.indicatorValue:SetEnabled(display and not bind.noindicator);
-                            bind.indicatorValue:SetKey((bind.text == nil or bind.text == '') and (bind.flag == nil and 'unknown' or bind.flag) or bind.text); -- this is so dumb
-                            bind.indicatorValue:SetValue('[Always]');
-                        end
+                        -- if bind.bind == 'none' then
+                        --     bind.state = true
+                        --     if bind.flag then
+                        --         library.flags[bind.flag] = bind.state;
+                        --     end
+                        --     bind.callback(true)
+                        --     local display = bind.state; if bind.invertindicator then display = not bind.state; end
+                        --     bind.indicatorValue:SetEnabled(display and not bind.noindicator);
+                        --     bind.indicatorValue:SetKey((bind.text == nil or bind.text == '') and (bind.flag == nil and 'unknown' or bind.flag) or bind.text); -- this is so dumb
+                        --     bind.indicatorValue:SetValue('[Always]');
+                        -- end
     
                         --- Create Objects ---
                         do
@@ -2481,7 +2480,6 @@ function library:init()
                                 local display = bind.state; if bind.invertindicator then display = not bind.state; end
                                 bind.indicatorValue:SetEnabled(display and not bind.noindicator);
                             end
-                            self.keycallback(self.bind);
                             self:SetKeyText(keyName:upper());
                             self.indicatorValue:SetKey((self.text == nil or self.text == '') and (self.flag == nil and 'unknown' or self.flag) or self.text); -- this is so dumb
                             self.indicatorValue:SetValue('['..keyName:upper()..']');
@@ -3969,7 +3967,6 @@ function library:init()
                         mode = 'toggle';
                         order = #self.options+1;
                         callback = function() end;
-                        keycallback = function() end;
                         indicatorValue = library.keyIndicator:AddValue({value = 'value', key = 'key', enabled = false});
                         noindicator = false;
                         state = false;
@@ -4065,8 +4062,7 @@ function library:init()
                             self.bind = 'none';
                         else
                             keyName = keyNames[keybind] or keybind.Name or keybind
-                        end
-                        self.keycallback(self.bind);
+                        end 
                         self:SetKeyText(keyName:upper());
                         self.indicatorValue:SetKey((self.text == nil or self.text == '') and (self.flag == nil and 'unknown' or self.flag) or self.text); -- this is so dumb
                         self.indicatorValue:SetValue('['..keyName:upper()..']');
