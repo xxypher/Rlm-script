@@ -56,7 +56,7 @@ Commands.Fly = function(State)
 
         Maid.flyBV.Parent = PlayerInfo.HumanoidRootPart;
         Maid.flyBV.MaxForce = Vector3.new(math.huge, math.huge, math.huge);
-        Maid.flyBV.Velocity = camera.CFrame:VectorToWorldSpace(ControlModule:GetMoveVector() * Library.flags.flySpeed);
+        Maid.flyBV.Velocity = camera.CFrame:VectorToWorldSpace(ControlModule:GetMoveVector() * 100);
 
         pullToGround()
         RunService.Heartbeat:Wait()
