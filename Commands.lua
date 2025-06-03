@@ -27,16 +27,22 @@ function pullToGround()
         Maid.flyUpBV.Parent = PlayerInfo.HumanoidRootPart
     end
 
-    Maid.flyDownBV = (Maid.flyDownBV and Maid.flyBV.flyDownBV and Maid.flyDownBV) or MainUtils.Create("downBV", "BodyVelocity")
+    Maid.flyDownBV = (Maid.flyDownBV and Maid.flyDownBV and Maid.flyDownBV) or MainUtils.Create("downBV", "BodyVelocity")
+
+    local Speed = Vector3.new(0,-Library.flags.downwardsVelocitySpeed,0)
+    if UserInputService:IsKeyDown(Enum.KeyCode.LeftControl) then
+       Speed = Speed * 1.5
+    end
 
     Maid.flyDownBV.MaxForce = Vector3.new(0,20000,0)
     Maid.flyDownBV.P = 1250
-    Maid.flyDownBV.Velocity = Vector3.new(0,-Library.flags.downwardsVelocitySpeed,0)
+    Maid.flyDownBV.Velocity = Speed
     Maid.flyDownBV.Parent = PlayerInfo.HumanoidRootPart
 end
 
 Commands.Fly = function(State)
     if (not State) then
+        Maid.fly:Disconnect()
         Maid.fly = nil
         Maid.flyDownBV = nil
         Maid.flyUpBV = nil
@@ -67,15 +73,10 @@ Commands.Fly = function(State)
         if UserInputService:IsKeyDown(Enum.KeyCode.D) then
             MoveDirection = MoveDirection + camera.CFrame.RightVector
         end
-        if UserInputService:IsKeyDown(Enum.KeyCode.Space) then
-            MoveDirection = MoveDirection + Vector3.new(0, 1, 0)
-        end
-        if UserInputService:IsKeyDown(Enum.KeyCode.LeftControl) then
-            MoveDirection = MoveDirection - Vector3.new(0, 1, 0)
-        end
+       
 
         Maid.flyBV.Parent = PlayerInfo.HumanoidRootPart;
-        Maid.flyBV.MaxForce = Vector3.new(math.huge, math.huge, math.huge);
+        Maid.flyBV.MaxForce = Vector3.new(math.huge, 0, math.huge);
         Maid.flyBV.Velocity = MoveDirection * 100
 
         pullToGround()
