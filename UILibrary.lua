@@ -60,7 +60,7 @@ local library = {
     open = false;
     opening = false;
     hasInit = false;
-    cheatname = 'Clanware';
+    cheatname = 'Untitled Hub';
     gamename = 'Universal';
     fileext = '.txt';
 }
@@ -4595,6 +4595,17 @@ function library:CreateSettingsTab(menu)
         end
     end
 
+
+    function AutoLoadConfig()
+        local Path = self.cheatname..'/'..self.gamename..'/configs/AutoLoad'.. self.fileext
+        if isfile(Path) then
+            local file = readfile(Path)
+            if file then
+                library:LoadConfig(file)
+            end
+        end
+    end
+
     configSection:AddButton({text = 'Load', confirm = true, callback = function()
         library:LoadConfig(library.flags.selectedconfig);
     end}):AddButton({text = 'Save', confirm = true, callback = function()
@@ -4615,7 +4626,16 @@ function library:CreateSettingsTab(menu)
         end
     end})
 
+    configSection:AddButton({text = 'Auto Load', confirm = true, callback =  function()
+        if library.flags.selectedconfig then
+            writefile(self.cheatname..'/'..self.gamename..'/configs/AutoLoad'.. self.fileext, library.flags.selectedconfig)
+        else
+            library:SendNotification(("You must select a config!"), 3, c3new(1,0,0))
+        end
+    end})
+
     refreshConfigs()
+    AutoLoadConfig()
 
     mainSection:AddBind({text = 'Open / Close', flag = 'togglebind', nomouse = true, noindicator = true, bind = Enum.KeyCode.End, callback = function()
         library:SetOpen(not library.open)
