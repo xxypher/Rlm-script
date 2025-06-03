@@ -13,21 +13,24 @@ local UserInputService = game:GetService("UserInputService")
 local Player = Players.LocalPlayer
 
 function pullToGround()
-
+    if (not Maid.fly) then
+        return
+    end
     if Maid.fly and UserInputService:IsKeyDown(Enum.KeyCode.Space) then
         if Maid.flyDownBV ~= nil then
             Maid.flyDownBV:Destroy()
         end
 
-        Maid.flyUpBV = (Maid.flyUpBV and Maid.flyUpBV) or MainUtils.Create("upBV", "BodyVelocity")
+        Maid.flyUpBV = Maid.flyDownBV or MainUtils.Create("upBV", "BodyVelocity")
 
         Maid.flyUpBV.MaxForce = Vector3.new(0,20000,0)
         Maid.flyUpBV.P = 1250
         Maid.flyUpBV.Velocity = Vector3.new(0,Library.flags.upwardVelocitySpeed,0)
         Maid.flyUpBV.Parent = PlayerInfo.HumanoidRootPart
+        return
     end
 
-    Maid.flyDownBV = (Maid.flyDownBV and Maid.flyDownBV) or MainUtils.Create("downBV", "BodyVelocity")
+    Maid.flyDownBV = Maid.flyDownBV or MainUtils.Create("downBV", "BodyVelocity")
 
     local Speed = Vector3.new(0,-Library.flags.downwardsVelocitySpeed,0)
     if UserInputService:IsKeyDown(Enum.KeyCode.LeftControl) then

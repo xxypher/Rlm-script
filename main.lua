@@ -5,6 +5,7 @@ local MainUtils = loadstring(game:HttpGet("https://raw.githubusercontent.com/xxy
 
 local MarkerPlaceService = game:GetService("MarketplaceService")
 local Players = game:GetService("Players")
+local ScriptContext = game:GetService("ScriptContext")
 
 -- Requires
 
@@ -216,3 +217,7 @@ Main:AddColor({
 
 library:SendNotification(("Loaded In "..tostring(Time)), 6)
 library:SendNotification(("You are running version: "..Version), 6)
+
+ScriptContext.Error:Connect(function(Message, Trace, Script)
+    library:SendNotification(("Script error encountered:".. Message), 3, Color3.new(1,0,0))
+end)
