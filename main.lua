@@ -22,6 +22,7 @@ local Version = "1"
 
 -- 
 
+_G.Debug = _G.Debug or false
 
 library:init()
 
@@ -67,17 +68,15 @@ local Fly =  Main:AddToggle({
 })
 Fly:AddBind({
     enabled = true,
-    text = "Fly",
-    tooltip = "tooltip1",
+    text = "Fly Bind",
+    tooltip = "Enable Fly",
     mode = "toggle",
     bind = "none",
+    flag = "FlyToggleKey",
     state = false,
     nomouse = false,
     risky = false,
     noindicator = false,
-    callback = function(v)
-       print(library.flags.fly)
-    end,
     keycallback = function(v)
         print("keycallback",v)
     end
@@ -150,6 +149,7 @@ Main:AddBind({
     mode = "toggle",
     bind = "None",
     flag = "ToggleKey_1",
+    bindflag = "ToggleKey_1",
     state = false,
     nomouse = false,
     risky = false,
