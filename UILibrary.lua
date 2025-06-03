@@ -2407,7 +2407,7 @@ function library:init()
                         end
                         
                         table.insert(self.options, bind)
-                         table.insert(toggle.subobjects, bind)
+                        table.insert(toggle.subobjects, bind)
 
                         if bind.flag then
                             library.options[bind.flag] = bind;
@@ -2467,8 +2467,8 @@ function library:init()
                         function bind:SetBind(keybind)
                             if c then
                                 c:Disconnect();
-                                if bind.flag then
-                                    library.flags[bind.flag] = false;
+                                if toggle.flag then
+                                    library.flags[toggle.flag] = false;
                                     toggle:SetState(false, false);
                                 end
                             end
@@ -2477,8 +2477,8 @@ function library:init()
                             if self.bind == Enum.KeyCode.Backspace then
                                 self.bind = 'none';
 
-                                if bind.flag then
-                                    library.flags[bind.flag] = bind.state;
+                                if toggle.flag then
+                                    library.flags[toggle.flag] = bind.state;
                                     toggle:SetState(bind.state, false);
                                 end
                                 local display = toggle.state; if bind.invertindicator then display = not toggle.state; end
@@ -2488,8 +2488,8 @@ function library:init()
                             end
                             if self.bind ~= 'none' then
                                 bind.state = false
-                                if bind.flag then
-                                    library.flags[bind.flag] = bind.state;
+                                if toggle.flag then
+                                    library.flags[toggle.flag] = bind.state;
                                 end
                                 toggle:SetState(bind.state, false);
                                 local display = bind.state; if bind.invertindicator then display = not bind.state; end
@@ -2522,14 +2522,14 @@ function library:init()
                             elseif not bind.binding and self.bind == 'none' then
                                 toggle:SetState(true, false);
                                 bind.state = toggle.state
-                                library.flags[bind.flag] = toggle.state
+                                library.flags[toggle.flag] = toggle.state
                                 local display = bind.state; if bind.invertindicator then display = not bind.state; end
                                 bind.indicatorValue:SetEnabled(display and not bind.noindicator)
                             elseif (inp.KeyCode == bind.bind or inp.UserInputType == bind.bind) and not bind.binding then
                                 if bind.mode == 'toggle' then
                                     bind.state = not bind.state
-                                    if bind.flag then
-                                        library.flags[bind.flag] = bind.state;
+                                    if toggle.flag then
+                                        library.flags[toggle.flag] = bind.state;
                                     end
 
                                     local display = bind.state; if bind.invertindicator then display = not bind.state; end
@@ -2537,8 +2537,8 @@ function library:init()
                                     toggle:SetState(bind.state, false);
                                     bind.state = toggle.state
                                 elseif bind.mode == 'hold' then
-                                    if bind.flag then
-                                        library.flags[bind.flag] = true;
+                                    if toggle.flag then
+                                        library.flags[toggle.flag] = true;
                                     end
                                     bind.indicatorValue:SetEnabled((not bind.invertindicator and true or false) and not bind.noindicator);
                                     toggle:SetState(true, false)
@@ -2556,8 +2556,8 @@ function library:init()
                                 if inp.KeyCode == bind.bind or inp.UserInputType == bind.bind then
                                     if c then
                                         c:Disconnect();
-                                        if bind.flag then
-                                            library.flags[bind.flag] = false;
+                                        if toggle.flag then
+                                            library.flags[toggle.flag] = false;
                                         end
                                         if bind.callback then
                                             bind.callback(false);
