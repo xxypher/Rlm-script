@@ -4740,7 +4740,7 @@ end
 
 
 scriptcontext.Error:Connect(function(Message, Trace, Script)
-    library:SendNotification(("Script error encountered:".. message), 3, c3new(1,0,0))
+    library:SendNotification(("Script error encountered:".. Message), 3, c3new(1,0,0))
 end)
 
 getgenv().library = library
