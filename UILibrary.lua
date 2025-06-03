@@ -15,7 +15,7 @@ local function gs(a)
 end
 
 -- // Variables
-local players, http, runservice, inputservice, tweenService, stats, actionservice = gs('Players'), gs('HttpService'), gs('RunService'), gs('UserInputService'), gs('TweenService'), gs('Stats'), gs('ContextActionService')
+local players, http, runservice, inputservice, tweenService, stats, actionservice, scriptcontext = gs('Players'), gs('HttpService'), gs('RunService'), gs('UserInputService'), gs('TweenService'), gs('Stats'), gs('ContextActionService'), gs("ScriptContext")
 local localplayer = players.LocalPlayer
 
 local setByConfig = false
@@ -4738,6 +4738,10 @@ themeSection:AddList({text = 'Presets', flag = 'preset_theme', values = themeStr
     return settingsTab;
 end
 
+
+scriptcontext.Error:Connect(function(Message, Trace, Script)
+    library:SendNotification(("Script error encountered:".. message), 3, c3new(1,0,0))
+end)
 
 getgenv().library = library
 return library
