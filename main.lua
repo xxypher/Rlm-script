@@ -63,7 +63,7 @@ local Fly =  Main:AddToggle({
     flag = "fly",
     risky = false,
     callback = function(v)
-       print(library.flags.fly)
+       Commands.Fly(v)
     end
 })
 Fly:AddBind({

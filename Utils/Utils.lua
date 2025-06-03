@@ -19,7 +19,7 @@ function Utils.CustomRequire(path)
 
 
 
-    local url = "https://raw.githubusercontent.com/xxypher/Rlm-script/refs/heads/myfirstfeature" and _G.Debug or "https://raw.githubusercontent.com/xxypher/Rlm-script/refs/heads/main" ..path
+    local url = _G.Debug and"https://raw.githubusercontent.com/xxypher/Rlm-script/refs/heads/myfirstfeature" or "https://raw.githubusercontent.com/xxypher/Rlm-script/refs/heads/main" ..path
 
     
     print(path)
