@@ -1,4 +1,4 @@
-local PlaceId = game.PlaceId
+
 local MainUtils = loadstring(game:HttpGet("https://raw.githubusercontent.com/xxypher/Rlm-script/refs/heads/main/Utils/Utils.lua"))()
 
 -- Services
@@ -13,6 +13,15 @@ local Commands = getgenv().Require("/Commands.lua")
 local library = getgenv().Require("/UILibrary.lua")
 
 -- Info
+
+local Decimals = 4
+local Clock = os.clock()
+local Time = (string.format("%."..tostring(Decimals).."f", os.clock() - Clock))
+local PlaceId = game.PlaceId
+local Version = "1"
+
+-- 
+
 
 library:init()
 
@@ -205,7 +214,5 @@ Main:AddColor({
 })
 
 
-local Decimals = 4
-local Clock = os.clock()
-local Time = (string.format("%."..tostring(Decimals).."f", os.clock() - Clock))
 library:SendNotification(("Loaded In "..tostring(Time)), 6)
+library:SendNotification(("You are running version: "..Version), 6)
